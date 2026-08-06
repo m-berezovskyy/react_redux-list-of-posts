@@ -33,19 +33,16 @@ export const PostDetails: React.FC<Props> = ({ post }) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    function loadComments() {
-      dispatch(setCommentsLoaded(false));
-      dispatch(setCommentsError(false));
-      setVisible(false);
+    setVisible(false);
 
-      commentsApi
-        .getPostComments(post.id)
-        .then(data => dispatch(setComments(data)))
-        .catch(() => dispatch(setCommentsError(true)))
-        .finally(() => dispatch(setCommentsLoaded(true)));
-    }
+    dispatch(setCommentsLoaded(false));
+    dispatch(setCommentsError(false));
 
-    loadComments();
+    commentsApi
+      .getPostComments(post.id)
+      .then(data => dispatch(setComments(data)))
+      .catch(() => dispatch(setCommentsError(true)))
+      .finally(() => dispatch(setCommentsLoaded(true)));
   }, [post.id, dispatch]);
 
   const addComment = async ({ name, email, body }: CommentData) => {
