@@ -33,8 +33,6 @@ export const PostDetails: React.FC<Props> = ({ post }) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    setVisible(false);
-
     dispatch(setCommentsLoaded(false));
     dispatch(setCommentsError(false));
 

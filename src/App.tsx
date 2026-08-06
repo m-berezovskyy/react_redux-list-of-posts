@@ -110,7 +110,9 @@ export const App: React.FC = () => {
             )}
           >
             <div className="tile is-child box is-success ">
-              {selectedPost && <PostDetails post={selectedPost} />}
+              {selectedPost && (
+                <PostDetails key={selectedPost.id} post={selectedPost} />
+              )}
             </div>
           </div>
         </div>
